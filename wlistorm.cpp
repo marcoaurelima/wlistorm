@@ -24,29 +24,29 @@ enum {
 
 void help(){
 
-    system("cls");
-    printf("\n                       -------------------------------- ");
-    printf("\n  --------------------|  wlistorm - wordlist generator |--------------------                byMarcoAur�lio (;");
-    printf("\n  --------------------|              v1.1              |--------------------                ");
-    printf("\n                       -------------------------------- ");
-    printf("\n  >  HELP               \n\n");
-    printf("  %c  wlistorm <min> <max> <alphabet> <(optional)>  \n", 218);
-    printf("  %c \n", 179);
-    printf("  %c  <min>           Minimum lenght of the generate words. \n", 195);
-    printf("  %c  <max>           Maximum lenght of the generate words. \n", 195);
-    printf("  %c  <alphabet>      Charactere list you will use in the wordlist generation. \n", 195);
-    printf("  %c  -m <mask>       The mask you want use in the word. All the charactere \"~\" will \n", 195);
-    printf("  %c                  be replaced to alphabet given. \n", 195);
-    printf("  %c  -f <filename>   The name or path of file to save the wordlist. If you no set -f,  \n", 195);
-    printf("  %c                  the generate words will be show in the screen.\n", 195);
-    printf("  %c  -r              Set -f if you want no charactere repetitions in the generated word. \n", 192);
+    system("clear");
+
+    std::cout << "\n                       -------------------------------- ";
+    std::cout << "\n  --------------------|  wlistorm - wordlist generator |--------------------";
+    std::cout << "\n  --------------------|         byMarcoAurelio         |--------------------";
+    std::cout << "\n                       -------------------------------- ";
+    std::cout << "\n  > HELP\n\n  ";
+    std::cout << "  wlistorm <min> <max> <alphabet> <(optional)>  \n";
+    std::cout << "  \n";
+    std::cout << "   <min>           Minimum lenght of the generate words. \n";
+    std::cout << "   <max>           Maximum lenght of the generate words. \n";
+    std::cout << "   <alphabet>      Charactere list you will use in the wordlist generation. \n";
+    std::cout << "   -m <mask>       The mask you want use in the word. All the charactere \"~\" will \n";
+    std::cout << "                   be replaced to alphabet given. \n";
+    std::cout << "   -f <filename>   The name or path of file to save the wordlist. If you no set -f,  \n";
+    std::cout << "                   the generate words will be show in the screen.\n";
+    std::cout << "   -r              Set -f if you want no charactere repetitions in the generated word. \n";
 
 
-    printf("\n\n  %c  EXAMPLE: \n", 218);
-    printf("  %c \n", 179);
-    printf("  %c  wlistorm 8 8 abcd -m mask~~~~ -f wordlist.txt -r \n", 192);
-    printf("\n  ---------------------------------------------------------------------------");
-    printf("\n\n");
+    std::cout << "\n\n   EXAMPLE: \n";
+    std::cout << "   wlistorm 8 8 abcd -m mask~~~~ -f wordlist.txt -r \n";
+    std::cout << "\n  ---------------------------------------------------------------------------";
+    std::cout << "\n\n";
 }
 
 int main(int argc, char *argv[])
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     }
 
     if(argc == 1){
-        system("cls");
+        system("clear");
         std::cout << "\n  --------------------|  wlistorm 1.1 - wordlist generator |--------------------                byMarco (;\n\n";
         std::cout << "\n  > Type \"wlistorm -h\" to help.\n\n";
         printf("\n  ------------------------------------------------------------------------------\n\n");
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    system("cls");
+    system("clear");
     std::cout << "\n  --------------------|  wlistorm 1.1 - wordlist generator |--------------------                byMarcoAur�lio (;\n\n";
 
     for(int i=1;i<argc;i++){
@@ -343,8 +343,9 @@ void printWordlistSize(uint64_t lines, int alphabet_size, std::string info){
     if(terabyte < 1){terabyte = 0; }
 
 
-    system("cls");
-    std::cout << "\n  --------------------|  wlistorm 1.1 - wordlist generator |--------------------                byMarcoAur�lio (;\n\n";
+    system("clear");
+    std::cout << "\n  --------------------|  wlistorm 1.1 - wordlist generator |--------------------";
+    std::cout << "\n  --------------------|           byMarcoAurelio           |--------------------\n\n";
     std::cout << info;
     std::cout << "  > FILE SIZE:  " << " |  "
     << lines << " Ln  |  "
