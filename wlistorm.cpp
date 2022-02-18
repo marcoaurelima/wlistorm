@@ -42,7 +42,6 @@ void help(){
     std::cout << "                   the generate words will be show in the screen.\n";
     std::cout << "   -r              Set -f if you want no charactere repetitions in the generated word. \n";
 
-
     std::cout << "\n\n   EXAMPLE: \n";
     std::cout << "   wlistorm 8 8 abcd -m mask~~~~ -f wordlist.txt -r \n";
     std::cout << "\n  ---------------------------------------------------------------------------";
@@ -112,15 +111,12 @@ int main(int argc, char *argv[])
             }
         }
         if(!strcmp(argv[i], "-f")){
-            //std::cout << "ffffff\n";
             type = TYPE_FILE;
             filename = argv[i+1];
         }
     }
 
-
-    /// wlistorm 8  8  abcd  -m mob*******   -f  wordlist.txt  -r
-
+    /// wlistorm 8  8  abcd  -m ana~~~~~   -f  wordlist.txt  -r
 
     /// - The MAX value must not less than MIN value
     ///
@@ -150,9 +146,6 @@ int main(int argc, char *argv[])
         }
 
     }
-
-    /// wlistorm 8  8  abcd  -m mob*******   -f  wordlist.txt  -r
-    //std::cout << "\n  --------------------|  wlistorm - wordlist generator |--------------------                byMarcoAur�lio (;\n\n";
 
     std::stringstream ss;
     ss << "\n  > INFO: | min: "<< min << " | max: " << max << " | alph: " << alphabet << ((mask.size() > 0)? " | mask: " + mask : "") <<  ((filename.size() > 0)? " | file: " + filename : "") << " | repeat char: " << ((repeat == true)? "yes" : "no") << " |     \n\n";
