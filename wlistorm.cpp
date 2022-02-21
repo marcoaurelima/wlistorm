@@ -26,12 +26,16 @@ void help(){
 
     system("clear");
 
-    std::cout << "\n                       -------------------------------- ";
-    std::cout << "\n  --------------------|  wlistorm - wordlist generator |--------------------";
-    std::cout << "\n                       -------------------------------- ";
-    std::cout << "\n  > HELP\n\n  ";
-    std::cout << "  wlistorm <min> <max> <alphabet> <(optional)>  \n";
-    std::cout << "  \n";
+    std::cout << "\n";
+    std::cout << R"( __      __.__  .__          __
+/  \    /  \  | |__| _______/  |_  ___________  _____
+\   \/\/   /  | |  |/  ___/\   __\/  _ \_  __ \/     \
+ \        /|  |_|  |\___ \  |  | (  <_> )  | \/  Y Y  \
+  \__/\  / |____/__/____  > |__|  \____/|__|  |__|_|  /
+       \/               \/      wordlist generator  \/)";
+
+    std::cout << "\n\n   HOW TO USE:\n";
+    std::cout << "   wlistorm <min> <max> <alphabet> <(optional)>  \n\n";
     std::cout << "   <min>           Minimum lenght of the generate words. \n";
     std::cout << "   <max>           Maximum lenght of the generate words. \n";
     std::cout << "   <alphabet>      Charactere list you will use in the wordlist generation. \n";
@@ -39,9 +43,9 @@ void help(){
     std::cout << "                   be replaced to alphabet given. \n";
     std::cout << "   -f <filename>   The name or path of file to save the wordlist. If you no set -f,  \n";
     std::cout << "                   the generate words will be show in the screen.\n";
-    std::cout << "   -r              Set -f if you want no charactere repetitions in the generated word. \n";
+    std::cout << "   -r              Set -r if you want no charactere repetitions in the generated word. \n";
 
-    std::cout << "\n\n   EXAMPLE: \n";
+    std::cout << "\n   EXAMPLE: \n";
     std::cout << "   wlistorm 8 8 abcd -m mask~~~~ -f wordlist.txt -r \n";
     std::cout << "\n  ---------------------------------------------------------------------------";
     std::cout << "\n\n";
@@ -59,9 +63,9 @@ int main(int argc, char *argv[])
     bool hasMask = false;
     std::string filename = "";
 
-    for(int i=0;i<argc;i++){
-        printf("- %s", argv[i]);
-    }
+    //for(int i=0;i<argc;i++){
+      //  printf("- %s", argv[i]);
+    //}
 
     if(argc == 1){
         system("clear");
