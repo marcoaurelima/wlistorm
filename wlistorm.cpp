@@ -21,18 +21,20 @@ enum {
     TYPE_CONSOLE_FILE
 };
 
+void print_logo(){
+  system("clear");
+  std::cout << R"(
+  __      __.__  .__          __
+ /  \    /  \  | |__| _______/  |_  ___________  _____
+ \   \/\/   /  | |  |/  ___/\   __\/  _ \_  __ \/     \
+  \        /|  |_|  |\___ \  |  | (  <_> )  | \/  Y Y  \
+   \__/\  / |____/__/____  > |__|  \____/|__|  |__|_|  /
+        \/               \/      wordlist generator  \/)";
+}
 
 void help(){
 
-    system("clear");
-
-    std::cout << "\n";
-    std::cout << R"( __      __.__  .__          __
-/  \    /  \  | |__| _______/  |_  ___________  _____
-\   \/\/   /  | |  |/  ___/\   __\/  _ \_  __ \/     \
- \        /|  |_|  |\___ \  |  | (  <_> )  | \/  Y Y  \
-  \__/\  / |____/__/____  > |__|  \____/|__|  |__|_|  /
-       \/               \/      wordlist generator  \/)";
+    print_logo();
 
     std::cout << "\n\n   HOW TO USE:\n";
     std::cout << "   wlistorm <min> <max> <alphabet> <(optional)>  \n\n";
@@ -63,15 +65,10 @@ int main(int argc, char *argv[])
     bool hasMask = false;
     std::string filename = "";
 
-    //for(int i=0;i<argc;i++){
-      //  printf("- %s", argv[i]);
-    //}
-
     if(argc == 1){
-        system("clear");
-        std::cout << "\n  --------------------|  wlistorm 1.1 - wordlist generator |--------------------                byMarco (;\n\n";
-        std::cout << "\n  > Type \"wlistorm -h\" to help.\n\n";
-        printf("\n  ------------------------------------------------------------------------------\n\n");
+        print_logo();
+        std::cout << "\n\n  Type \"wlistorm -h\" to help.\n";
+        printf("  ---------------------------\n\n");
         return 0;
 
     } else if(argc == 2){
@@ -92,8 +89,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    system("clear");
-    std::cout << "\n  --------------------|  wlistorm 1.1 - wordlist generator |--------------------                byMarcoAur�lio (;\n\n";
+    print_logo();
 
     for(int i=1;i<argc;i++){
         if(!strcmp(argv[i], "-r")){
@@ -339,9 +335,8 @@ void printWordlistSize(uint64_t lines, int alphabet_size, std::string info){
     if(terabyte < 1){terabyte = 0; }
 
 
-    system("clear");
-    std::cout << "\n  --------------------|  wlistorm 1.1 - wordlist generator |--------------------";
-    std::cout << "\n  --------------------|           byMarcoAurelio           |--------------------\n\n";
+    print_logo();
+
     std::cout << info;
     std::cout << "  > FILE SIZE:  " << " |  "
     << lines << " Ln  |  "
