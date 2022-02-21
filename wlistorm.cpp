@@ -28,7 +28,6 @@ void help(){
 
     std::cout << "\n                       -------------------------------- ";
     std::cout << "\n  --------------------|  wlistorm - wordlist generator |--------------------";
-    std::cout << "\n  --------------------|         byMarcoAurelio         |--------------------";
     std::cout << "\n                       -------------------------------- ";
     std::cout << "\n  > HELP\n\n  ";
     std::cout << "  wlistorm <min> <max> <alphabet> <(optional)>  \n";
