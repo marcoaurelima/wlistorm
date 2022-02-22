@@ -8,17 +8,24 @@
 #include <cstring>
 #include <bits/stdc++.h>
 
-bool endOfwordlist(const std::string&, const std::vector<int>&);
-void increment(std::string&, std::vector<int>&);
-void printWord(const std::string&, const std::vector<int>&, bool, int, bool, std::string, std::string, FILE*);
-void printControl(const std::string&, const std::vector<int>&, bool);
-void printWordlistSize(uint64_t, int, std::string);
-bool allowWord(const std::vector<int>&, bool);
+void printWord(const std::string& alphabet,
+               const std::vector<int>& control,
+               bool repeatitions,
+               int type,
+               bool hasMask,
+               std::string mask,
+               std::string filename,
+               FILE* file);
+
+bool endOfwordlist (const std::string& alphabet, const std::vector<int>& control);
+void increment     (std::string& alphabet, std::vector<int>& control);
+bool allowWord     (const std::vector<int>& control, bool repeatitions);
+void printWordlistSize(uint64_t lines, int alphabet_size, std::string info);
 
 enum {
-    TYPE_CONSOLE,
-    TYPE_FILE,
-    TYPE_CONSOLE_FILE
+    TYPE_OUT_TERM,
+    TYPE_OUT_FILE,
+    TYPE_OUT_TERM_FILE
 };
 
 void print_logo(){
@@ -58,7 +65,7 @@ int main(int argc, char *argv[])
     int min = 0;
     int max = 0;
     bool repeat = true;
-    int type =  TYPE_CONSOLE;
+    int type =  TYPE_OUT_TERM;
     std::string alphabet = "";
     std::vector<int> control = {0};
     std::string mask = "";
@@ -110,7 +117,7 @@ int main(int argc, char *argv[])
             }
         }
         if(!strcmp(argv[i], "-f")){
-            type = TYPE_FILE;
+            type = TYPE_OUT_FILE;
             filename = argv[i+1];
         }
     }
@@ -178,7 +185,7 @@ int main(int argc, char *argv[])
      std::cout << "\n\n  > Please wait...\n\n";
 
     FILE* file = NULL;
-    if(type == TYPE_FILE || type == TYPE_CONSOLE_FILE){
+    if(type == TYPE_OUT_FILE || type == TYPE_OUT_TERM_FILE){
         file = fopen(filename.c_str(), "w");
         fclose(file);
         file = fopen(filename.c_str(), "a");
@@ -257,7 +264,7 @@ void printWord(const std::string& alphabet, const std::vector<int>& control, boo
     static uint64_t count = 0;
 
     if(repeatitions){
-        if(type == TYPE_CONSOLE || type == TYPE_CONSOLE_FILE){
+        if(type == TYPE_OUT_TERM || type == TYPE_OUT_TERM_FILE){
             std::cout << "  [" << ++count << "] ";
         }
         std::string word;
@@ -265,14 +272,14 @@ void printWord(const std::string& alphabet, const std::vector<int>& control, boo
             word += alphabet[item];
         }
 
-        if(type == TYPE_CONSOLE || type == TYPE_CONSOLE_FILE){
+        if(type == TYPE_OUT_TERM || type == TYPE_OUT_TERM_FILE){
             if(hasMask){
                 std::cout << insertMask(word, mask) << std::endl;
             } else {
                 std::cout << word << std::endl;
             }
         }
-        if(type == TYPE_FILE || type == TYPE_CONSOLE_FILE){
+        if(type == TYPE_OUT_FILE || type == TYPE_OUT_TERM_FILE){
             if(hasMask){
                 fprintf(file, "%s\n", insertMask(word, mask).c_str());
             } else {
@@ -282,7 +289,7 @@ void printWord(const std::string& alphabet, const std::vector<int>& control, boo
 
     } else {
         if(!hasRepetitions(control)){
-            if(type == TYPE_CONSOLE || type == TYPE_CONSOLE_FILE){
+            if(type == TYPE_OUT_TERM || type == TYPE_OUT_TERM_FILE){
                 std::cout << "  [" << ++count << "] ";
             }
             std::string word;
@@ -290,14 +297,14 @@ void printWord(const std::string& alphabet, const std::vector<int>& control, boo
                 word += alphabet[item];
             }
 
-            if(type == TYPE_CONSOLE || type == TYPE_CONSOLE_FILE){
+            if(type == TYPE_OUT_TERM || type == TYPE_OUT_TERM_FILE){
                 if(hasMask){
                     std::cout << insertMask(word, mask) << std::endl;
                 } else {
                     std::cout << word << std::endl;
                 }
             }
-            if(type == TYPE_FILE || type == TYPE_CONSOLE_FILE){
+            if(type == TYPE_OUT_FILE || type == TYPE_OUT_TERM_FILE){
                 if(hasMask){
                      fprintf(file, "%s\n", insertMask(word, mask).c_str());
                 } else {
